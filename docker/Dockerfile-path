@@ -1,0 +1,13 @@
+FROM xhdt-yolov8:latest-cpu
+
+RUN mkdir -p /usr/src/ultralytics/main/results \
+    /usr/src/ultralytics/main/config
+
+RUN pip install shapely
+
+COPY ./path.py  /usr/src/ultralytics/main
+COPY ./get_config.py  /usr/src/ultralytics/main
+
+WORKDIR /usr/src/ultralytics
+
+ENTRYPOINT ["python", "main/path.py"]

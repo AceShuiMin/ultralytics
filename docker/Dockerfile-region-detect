@@ -1,0 +1,13 @@
+FROM ultralytics/ultralytics:latest
+
+RUN mkdir -p /usr/src/ultralytics/main/results \
+    /usr/src/ultralytics/main/config \
+    /usr/src/ultralytics/main/temp
+
+RUN pip install shapely -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install lap -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+COPY ./detect.py  /usr/src/ultralytics/main
+COPY ./get_config.py  /usr/src/ultralytics/main
+
+WORKDIR /usr/src/ultralytics

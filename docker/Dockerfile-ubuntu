@@ -1,0 +1,6 @@
+FROM xhdt-base/ubuntu:latest
+
+RUN apt-get install -y ffmpeg
+RUN apt-get install -y libx264
+RUN apt-get install -y x264
+

@@ -1,0 +1,17 @@
+FROM xhdt-yolov8:latest-cpu
+
+RUN mkdir -p /usr/src/ultralytics/main/results \
+    /usr/src/ultralytics/main/config
+
+RUN pip install shapely
+
+COPY ./detect_with_region.py  /usr/src/ultralytics/main
+COPY ./get_config.py  /usr/src/ultralytics/main
+COPY ./device.yaml /usr/src/ultralytics/main/config
+COPY ./regions.yaml /usr/src/ultralytics/main/config
+COPY ./best.pt /usr/src/ultralytics
+COPY ./hardhat.mp4 /usr/src/ultralytics
+WORKDIR /usr/src/ultralytics
+
+ENTRYPOINT ["python", "main/detect_with_region.py"]
+CMD ["--source=hardhat.mp4", "--weights=best.pt", "--classes=2"]
