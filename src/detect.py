@@ -1,3 +1,6 @@
+"""
+  推理功能开发版
+"""
 import argparse
 
 import torch.cuda

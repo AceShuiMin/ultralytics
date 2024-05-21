@@ -166,3 +166,6 @@ pnnx*
 /ultralytics/assets/
 
 resources
+
+*.jpg
+*.mp4
